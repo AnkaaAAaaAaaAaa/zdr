@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шо ти голова</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fde8ff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 32px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-image: url('kvitka_hamster_2.png');
+            background-size: cover;
+            animation: confettiAnimation 2s forwards;
+        }
+
+        @keyframes confettiAnimation {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(500px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>З 20-ти річчям!</h1>
+    <p>Будь щаслива і здорова цигиль цигиль ай люлю</p>
+
+    <script>
+        const createConfetti = () => {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+
+            // Розміщення на випадкових позиціях
+            const x = Math.random() * window.innerWidth;
+            const delay = Math.random() * 2;
+
+            confetti.style.left = `${x}px`;
+            confetti.style.animationDelay = `${delay}s`;
+
+            document.body.appendChild(confetti);
+
+            // Видалення після анімації
+            setTimeout(() => {
+                confetti.remove();
+            }, 2500); // час, відповідний анімації
+        };
+
+        // Створюємо конфетті через кожні 100 мілісекунд
+        setInterval(createConfetti, 100);
+    </script>
+</body>
+</html>
